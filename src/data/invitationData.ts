@@ -1,0 +1,72 @@
+export interface InvitationData {
+  name: string;
+  age: number;
+  dateISO: string;
+  day: string;
+  monthES: string;
+  monthEN: string;
+  year: string;
+  weekdayES: string;
+  weekdayEN: string;
+  tagline: { es: string; en: string };
+  ceremony: { time: string; place: string; address: string };
+  reception: { time: string; place: string; address: string };
+  venue: string;
+  address: string;
+  mapsUrl: string;
+  parents: { es: string[]; en: string[] };
+  godparents: { es: string[]; en: string[] };
+  dressCode: { es: string; en: string };
+  whatsappNumber: string;
+  whatsappMessage: { es: string; en: string };
+  photos: { src: string; alt: string; caption: { es: string; en: string } }[];
+}
+
+export const invitationData: InvitationData = {
+  name: 'Camila',
+  age: 15,
+  dateISO: '2026-08-01T17:00:00',
+  day: '01',
+  monthES: 'Agosto',
+  monthEN: 'August',
+  year: '2026',
+  weekdayES: 'Sábado',
+  weekdayEN: 'Saturday',
+  tagline: {
+    es: 'Un sueño que comienza, una nueva etapa que llega, y un momento que quiero compartir contigo.',
+    en: 'A dream begins, a new chapter unfolds, and a moment I wish to share with you.',
+  },
+  ceremony: { time: '5:00 PM', place: 'Parroquia del Castillo Real', address: 'Av. de las Rosas 123, Jardín Encantado' },
+  reception: { time: '7:00 PM', place: 'Salón Cristal de Hadas', address: 'Blvd. Champagne 456, Valle Dorado' },
+  venue: 'Salón Cristal de Hadas',
+  address: 'Blvd. Champagne 456, Valle Dorado',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Salon+de+eventos',
+  parents: {
+    es: ['Mariana Solís', 'Alejandro Mendoza'],
+    en: ['Mariana Solis', 'Alejandro Mendoza'],
+  },
+  godparents: {
+    es: ['Lucía Fernández', 'Diego Ramírez'],
+    en: ['Lucia Fernandez', 'Diego Ramirez'],
+  },
+  dressCode: {
+    es: 'Formal · Jardín Encantado. Tonos pastel bienvenidos. Evitar blanco y rosa empolvado reservado para la quinceañera.',
+    en: 'Formal · Enchanted Garden. Pastel tones welcome. Please avoid white and dusty pink reserved for the quinceañera.',
+  },
+  whatsappNumber: '5215500000000',
+  whatsappMessage: {
+    es: 'Hola, confirmo mi asistencia a los XV años de Camila ✨',
+    en: 'Hello, I confirm my attendance to Camila’s Quinceañera ✨',
+  },
+  photos: [
+    { src: 'photo-1', alt: 'Camila retrato princesa', caption: { es: 'Mi cuento', en: 'My story' } },
+    { src: 'photo-2', alt: 'Camila entre rosas', caption: { es: 'Entre flores', en: 'Among flowers' } },
+    { src: 'photo-3', alt: 'Camila vestido de gala', caption: { es: 'El gran día', en: 'The grand day' } },
+    { src: 'photo-4', alt: 'Camila detalle corona', caption: { es: 'Sueño dorado', en: 'Golden dream' } },
+  ],
+};
+
+export function whatsappLink(lang: 'es' | 'en'): string {
+  const msg = encodeURIComponent(invitationData.whatsappMessage[lang]);
+  return `https://wa.me/${invitationData.whatsappNumber}?text=${msg}`;
+}
