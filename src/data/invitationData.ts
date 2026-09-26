@@ -59,10 +59,16 @@ export const invitationData: InvitationData = {
     en: 'Hello, I confirm my attendance to Camila’s Quinceañera ✨',
   },
   photos: [
-    { src: 'photo-1', alt: 'Camila retrato princesa', caption: { es: 'Mi cuento', en: 'My story' } },
-    { src: 'photo-2', alt: 'Camila entre rosas', caption: { es: 'Entre flores', en: 'Among flowers' } },
-    { src: 'photo-3', alt: 'Camila vestido de gala', caption: { es: 'El gran día', en: 'The grand day' } },
-    { src: 'photo-4', alt: 'Camila detalle corona', caption: { es: 'Sueño dorado', en: 'Golden dream' } },
+    { src: '/photo1.jpg', alt: 'Camila retrato', caption: { es: '', en: '' } },
+    { src: '/photo2.jpg', alt: 'Camila en el jardín', caption: { es: '', en: '' } },
+    { src: '/photo3.jpg', alt: 'Camila detalle', caption: { es: '', en: '' } },
+    { src: '/photo4.jpg', alt: 'Camila elegante', caption: { es: '', en: '' } },
+    { src: '/photo5.jpg', alt: 'Camila sonriendo', caption: { es: '', en: '' } },
+    { src: '/photo6.jpg', alt: 'Camila con flores', caption: { es: '', en: '' } },
+    { src: '/photo7.jpg', alt: 'Camila en palacio', caption: { es: '', en: '' } },
+    { src: '/photo8.jpg', alt: 'Camila detalle dorado', caption: { es: '', en: '' } },
+    { src: '/photo9.jpg', alt: 'Camila mágica', caption: { es: '', en: '' } },
+    { src: '/photo10.jpg', alt: 'Camila soñando', caption: { es: '', en: '' } },
   ],
 };
 

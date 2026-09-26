@@ -21,10 +21,6 @@ export default function App() {
     <div className="invitation-shell">
       <a href="#hero" className="sr-only">Saltar al contenido</a>
       <div className="top-controls">
-        <div className="chip" role="group" aria-label={t.langLabel}>
-          <button aria-pressed={lang === 'es'} onClick={() => setLang('es')}>ES</button>
-          <button aria-pressed={lang === 'en'} onClick={() => setLang('en')}>EN</button>
-        </div>
         {opened && <MusicPlayer lang={lang} />}
       </div>
 

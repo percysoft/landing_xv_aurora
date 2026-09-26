@@ -24,6 +24,9 @@ export function HeroSection({ lang }: { lang: Lang }) {
         <p className="kicker">{t.heroKicker}</p>
         <h1 className="script" style={{ fontSize: 'clamp(4.5rem,18vw,7.5rem)', margin: '.2em 0 0' }}>Camila</h1>
         <GoldenOrnament />
+        <div className="hero-portrait-wrapper">
+          <img src="/aurora.jpg" alt="" className="hero-portrait" />
+        </div>
         <p className="serif-title" style={{ letterSpacing: '.3em', fontSize: '.95rem' }}>{t.heroDate}</p>
         <p className="lead">{invitationData.tagline[lang]}</p>
         <p style={{ fontSize: '.8rem', letterSpacing: '.2em', textTransform: 'uppercase', opacity: .7 }}>↓ {t.heroScroll}</p>
@@ -104,8 +107,6 @@ export function ParentsGodparents({ lang }: { lang: Lang }) {
   );
 }
 
-const PH_BG: [string, string][] = [['#f6cfda', '#f9ecd4'], ['#e8c8d8', '#fdf3e7'], ['#f9dfe6', '#e9d5bd'], ['#f3c6d3', '#fffaf3']];
-
 export function GallerySection({ lang }: { lang: Lang }) {
   const t = translations[lang];
   return (
@@ -114,16 +115,9 @@ export function GallerySection({ lang }: { lang: Lang }) {
       <h2 className="serif-title" style={{ fontSize: '2rem' }}>{t.galleryTitle}</h2>
       <div className="photo-stack" style={{ marginTop: '1.4rem' }}>
         {invitationData.photos.map((p, i) => (
-          <figure key={p.src} className="photo-card" style={{ ['--bg1' as string]: PH_BG[i][0], ['--bg2' as string]: PH_BG[i][1] }}>
-            <div className="ph" role="img" aria-label={p.alt}>
-              <span style={{ fontSize: '4rem' }}>{['👸', '🌹', '👗', '👑'][i]}</span>
-              <span style={{ position: 'absolute', bottom: 8, fontSize: '.8rem', letterSpacing: '.2em' }}>✦ {p.src} ✦</span>
-            </div>
-            <figcaption>{p.caption[lang]}</figcaption>
-          </figure>
+          <img key={p.src} className="ph" src={p.src} alt={p.alt} loading="lazy" />
         ))}
       </div>
-      <p className="sr-only">Fotos cargadas con lazy y composición artística</p>
     </Wrap>
   );
 }
@@ -140,11 +134,20 @@ export function EventsSection({ lang }: { lang: Lang }) {
         </div>
       </Wrap>
       <Wrap id="recepcion">
-        <Carriage size={110} />
         <div className="event-card">
-          <h3>🥂 {t.receptionTitle}</h3>
-          <p className="serif-title" style={{ fontSize: '1.3rem' }}>{invitationData.reception.place}</p>
-          <p>{invitationData.reception.time} · {invitationData.reception.address}</p>
+          <h3>📍 {t.locationTitle}</h3>
+          <p>{invitationData.venue} · {invitationData.address}</p>
+          <p><a className="btn-lux" href={invitationData.mapsUrl} target="_blank" rel="noopener noreferrer">{t.locationBtn}</a></p>
+        </div>
+        <div className="map-wrapper" style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-soft)', border: '1px solid rgba(201,162,75,.5)', marginTop: '1rem' }}>
+          <iframe
+            title={t.locationTitle}
+            src={invitationData.mapsUrl.replace('maps/search', 'maps/embed').replace('maps/place', 'maps/embed')}
+            style={{ width: '100%', height: '300px', border: 'none', display: 'block' }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
       </Wrap>
       <Wrap id="dresscode">
@@ -166,13 +169,6 @@ export function EventsSection({ lang }: { lang: Lang }) {
           <p style={{ marginTop: '1rem' }}>
             <a className="btn-lux" href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">✆ {t.confirmBtn}</a>
           </p>
-        </div>
-      </Wrap>
-      <Wrap id="ubicacion">
-        <div className="event-card">
-          <h3>📍 {t.locationTitle}</h3>
-          <p>{invitationData.venue} · {invitationData.address}</p>
-          <p><a className="btn-lux" href={invitationData.mapsUrl} target="_blank" rel="noopener noreferrer">{t.locationBtn}</a></p>
         </div>
       </Wrap>
     </>

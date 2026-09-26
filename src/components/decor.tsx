@@ -107,21 +107,16 @@ export function FlowerCorner({ position = 'tl' }: { position?: 'tl' | 'tr' | 'bl
 
 export function Castle({ size = 150 }: { size?: number }) {
   return (
-    <svg viewBox="0 0 220 150" width={size} height={size * 0.68} role="img" aria-label="Castillo de cuento de hadas">
-      <g>
-        <rect x="70" y="60" width="80" height="70" rx="4" fill="#f6dfd8" stroke="#c9a24b" strokeWidth="2" />
-        <rect x="30" y="80" width="34" height="50" rx="3" fill="#f9e9dc" stroke="#c9a24b" strokeWidth="2" />
-        <rect x="156" y="80" width="34" height="50" rx="3" fill="#f9e9dc" stroke="#c9a24b" strokeWidth="2" />
-        <polygon points="30,80 47,50 64,80" fill="#e8a9bc" stroke="#c9a24b" strokeWidth="2" />
-        <polygon points="156,80 173,50 190,80" fill="#e8a9bc" stroke="#c9a24b" strokeWidth="2" />
-        <rect x="92" y="30" width="36" height="60" rx="3" fill="#fdf3e7" stroke="#c9a24b" strokeWidth="2" />
-        <polygon points="88,32 110,6 132,32" fill="#d98aa3" stroke="#c9a24b" strokeWidth="2" />
-        <rect x="102" y="96" width="16" height="34" rx="8" fill="#8a6a2b" />
-        <circle cx="110" cy="22" r="4" fill="#e6c988"><animate attributeName="opacity" values="1;.3;1" dur="2.5s" repeatCount="indefinite" /></circle>
-        <rect x="80" y="78" width="12" height="16" rx="6" fill="#b7cbe0" /><rect x="128" y="78" width="12" height="16" rx="6" fill="#b7cbe0" />
-        <text x="110" y="118" textAnchor="middle" fontSize="22">👑</text>
-      </g>
-    </svg>
+    <img
+      src="/castillo.png"
+      alt="Castillo de cuento de hadas"
+      style={{
+        width: size,
+        height: size * 0.68,
+        objectFit: 'contain',
+        filter: 'drop-shadow(0 12px 30px rgba(201,162,75,.35))'
+      }}
+    />
   );
 }
 
