@@ -311,3 +311,9 @@ body.elegante .butterfly { display: none; }
 .parents-stack { margin: 1.2rem auto .6rem; display: grid; gap: .5rem; justify-items: center; }
 .parent-name { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.45rem, 6.4vw, 1.9rem); letter-spacing: .04em; line-height: 1.25; margin: 0; color: #7a3f58; text-shadow: 0 1px 0 rgba(255,255,255,.8); }
 .parents-stack .amp { font-family: var(--font-script); font-size: 2.2rem; line-height: 1; color: #c9a24b; margin: .1rem 0 .3rem; }
+
+/* nombre legible: serif de caps clásicas en oro rosado */
+body.elegante .name-legible { font-family: var(--font-display) !important; font-weight: 500; text-transform: uppercase; letter-spacing: .14em; line-height: 1.1; padding-left: .14em; }
+body.elegante h1.name-legible { font-size: clamp(2.6rem, 12.5vw, 4.4rem) !important; margin: .35em 0 0 !important; }
+body.elegante .env-letter .name-legible { font-size: 2rem !important; margin: .15em 0 .1em; }
+body.elegante footer .name-legible { font-size: 2.2rem !important; }

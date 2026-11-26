@@ -25,7 +25,7 @@ export function HeroSection({ lang }: { lang: Lang }) {
         <ButterflyField />
         <FlowerCorner position="tl" /><FlowerCorner position="tr" />
         <p className="kicker">{t.heroKicker}</p>
-        <h1 className="script" style={{ fontSize: 'clamp(4.5rem,18vw,7.5rem)', margin: '.2em 0 0' }}>{invitationData.name}</h1>
+        <h1 className="script name-legible" style={{ fontSize: 'clamp(4.5rem,18vw,7.5rem)', margin: '.2em 0 0' }}>{invitationData.name}</h1>
         <GoldenOrnament />
         <div className="hero-portrait-wrapper">
           <img src={invitationData.heroImage ?? '/aurora.jpg'} alt={invitationData.name} className="hero-portrait" />
@@ -221,7 +221,7 @@ export function FinalSection({ lang, onReplay }: { lang: Lang; onReplay: () => v
       <GoldenParticles count={16} id="final" />
       <Castle size={130} />
       <p className="lead" style={{ marginTop: '1rem' }}>{t.finalThanks}</p>
-      <div className="script" style={{ fontSize: '3.4rem' }}>{t.finalName}</div>
+      <div className="script name-legible" style={{ fontSize: '3.4rem' }}>{t.finalName}</div>
       <div className="kicker">{t.finalSub}</div>
       <GoldenOrnament />
       <p><button className="btn-lux" onClick={onReplay}>↻ {lang === 'es' ? 'Reviver la apertura' : 'Replay opening'}</button></p>
