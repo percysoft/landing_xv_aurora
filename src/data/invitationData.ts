@@ -24,6 +24,7 @@ export interface InvitationData {
   frameImage?: string;
   music?: string;
   elegant?: boolean;
+  dedication?: { es: string; en: string };
   confirmBefore?: { es: string; en: string };
 }
 
@@ -113,6 +114,10 @@ const ariana: InvitationData = {
   frameImage: '/ariana/xv-1.jpg',
   music: '/ariana/musica.mp3',
   elegant: true,
+  dedication: {
+    es: 'Hay sueños que se guardan desde niña, y hoy uno de ellos se hace realidad. Quiero compartir contigo este momento tan especial, porque eres parte de mi historia y de las personas que más quiero. Gracias por acompañarme a comenzar esta nueva etapa.',
+    en: 'Some dreams are kept since childhood, and today one of them comes true. I want to share this special moment with you, because you are part of my story and of the people I love most. Thank you for joining me as I begin this new chapter.',
+  },
   photos: [
     ph('/ariana/nina-1.jpg', 'Ariana de pequeña con gorrito'),
     ph('/ariana/nina-2.jpg', 'Ariana sonriendo'),

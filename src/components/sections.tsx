@@ -97,6 +97,16 @@ export function ParentsGodparents({ lang }: { lang: Lang }) {
   const t = translations[lang];
   return (
     <>
+      {invitationData.dedication && (
+        <Wrap id="dedicatoria">
+          <div className="dedication">
+            <span className="quote-mark" aria-hidden="true">“</span>
+            <p>{invitationData.dedication[lang]}</p>
+            <GoldenOrnament />
+            <p className="dedication-sign">{invitationData.name}</p>
+          </div>
+        </Wrap>
+      )}
       <Wrap id="padres">
         <p className="kicker">{t.parentsKicker}</p>
         {invitationData.elegant ? (
