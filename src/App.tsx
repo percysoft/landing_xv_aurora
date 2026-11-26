@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import './index.css';
 import OpeningEnvelope from './components/OpeningEnvelope';
+import ButterflyOverlay from './components/ButterflyOverlay';
 import MusicPlayer from './components/MusicPlayer';
 import { HeroSection, PrincessSection, ParchmentSection, DateCountdown, ParentsGodparents, GallerySection, EventsSection, FinalSection } from './components/sections';
 import { translations, type Lang } from './i18n/translations';
@@ -20,6 +21,7 @@ export default function App() {
   return (
     <div className="invitation-shell">
       <a href="#hero" className="sr-only">Saltar al contenido</a>
+      {opened && <ButterflyOverlay />}
       <div className="top-controls">
         {opened && <MusicPlayer lang={lang} />}
       </div>

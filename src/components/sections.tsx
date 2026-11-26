@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { invitationData, whatsappLink } from '../data/invitationData';
 import { translations, type Lang } from '../i18n/translations';
 import { useCountdown, useParallax, useReveal } from '../hooks/hooks';
@@ -111,15 +112,38 @@ export function ParentsGodparents({ lang }: { lang: Lang }) {
 
 export function GallerySection({ lang }: { lang: Lang }) {
   const t = translations[lang];
+  const [open, setOpen] = useState<number | null>(null);
+  const photos = invitationData.photos;
+  const shapes = ['arch', 'oval', 'polaroid', 'arch', 'polaroid', 'oval'];
   return (
     <Wrap id="galeria">
+      <Sparkles count={8} />
       <p className="kicker">{t.galleryKicker}</p>
       <h2 className="serif-title" style={{ fontSize: '2rem' }}>{t.galleryTitle}</h2>
-      <div className="photo-stack" style={{ marginTop: '1.4rem' }}>
-        {invitationData.photos.map((p, i) => (
-          <img key={p.src} className="ph" src={p.src} alt={p.alt} loading="lazy" />
+      <GoldenOrnament />
+      {photos[0] && (
+        <button className="frame frame-hero" onClick={() => setOpen(0)} aria-label={photos[0].alt}>
+          <span className="gem tl" /><span className="gem tr" /><span className="gem bl" /><span className="gem br" />
+          <img src={photos[0].src} alt={photos[0].alt} loading="lazy" />
+        </button>
+      )}
+      <div className="gallery-grid">
+        {photos.slice(1).map((p, i) => (
+          <button key={p.src} className={`frame frame-${shapes[i % shapes.length]} tilt-${i % 3}`} onClick={() => setOpen(i + 1)} aria-label={p.alt}>
+            <img src={p.src} alt={p.alt} loading="lazy" />
+          </button>
         ))}
       </div>
+      {open !== null && (
+        <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setOpen(null)}>
+          <button className="lb-close" aria-label="Cerrar">✕</button>
+          <button className="lb-nav prev" aria-label="Anterior" onClick={(e) => { e.stopPropagation(); setOpen((open - 1 + photos.length) % photos.length); }}>‹</button>
+          <div className="frame frame-hero lb-frame" onClick={(e) => e.stopPropagation()}>
+            <img src={photos[open].src} alt={photos[open].alt} />
+          </div>
+          <button className="lb-nav next" aria-label="Siguiente" onClick={(e) => { e.stopPropagation(); setOpen((open + 1) % photos.length); }}>›</button>
+        </div>
+      )}
     </Wrap>
   );
 }
