@@ -102,7 +102,7 @@ const ariana: InvitationData = {
     es: 'Formal. Se agradece evitar el rosado y el blanco, reservados para la quinceañera.',
     en: 'Formal. Please avoid pink and white, reserved for the quinceañera.',
   },
-  whatsappNumber: '51999999999',
+  whatsappNumber: '51953338980',
   whatsappMessage: {
     es: 'Hola, confirmo mi asistencia a los XV años de Ariana ✨',
     en: 'Hello, I confirm my attendance to Ariana’s Quinceañera ✨',
