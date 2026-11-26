@@ -20,9 +20,13 @@ export interface InvitationData {
   whatsappNumber: string;
   whatsappMessage: { es: string; en: string };
   photos: { src: string; alt: string; caption: { es: string; en: string } }[];
+  heroImage?: string;
+  frameImage?: string;
+  music?: string;
+  confirmBefore?: { es: string; en: string };
 }
 
-export const invitationData: InvitationData = {
+const camila: InvitationData = {
   name: 'Camila',
   age: 15,
   dateISO: '2026-08-01T17:00:00',
@@ -71,6 +75,55 @@ export const invitationData: InvitationData = {
     { src: '/photo10.jpg', alt: 'Camila soñando', caption: { es: '', en: '' } },
   ],
 };
+
+const ph = (src: string, alt: string) => ({ src, alt, caption: { es: '', en: '' } });
+
+const ariana: InvitationData = {
+  ...camila,
+  name: 'Ariana',
+  dateISO: '2026-12-26T18:00:00',
+  day: '26',
+  monthES: 'Diciembre',
+  monthEN: 'December',
+  weekdayES: 'Sábado',
+  weekdayEN: 'Saturday',
+  tagline: {
+    es: 'Ariana Abigail Rivera Dávila te invita a celebrar sus XV años, una noche de princesa que quiere compartir contigo.',
+    en: 'Ariana Abigail Rivera Dávila invites you to celebrate her quinceañera, a princess night she wishes to share with you.',
+  },
+  ceremony: { time: '5:00 PM', place: 'Por confirmar', address: 'Dirección por confirmar' },
+  reception: { time: '7:00 PM', place: 'Por confirmar', address: 'Dirección por confirmar' },
+  venue: 'Por confirmar',
+  address: 'Dirección por confirmar',
+  parents: { es: ['Lita Ivonne Dávila Neyra', 'David Rivera Castillo'], en: ['Lita Ivonne Dávila Neyra', 'David Rivera Castillo'] },
+  godparents: { es: [], en: [] },
+  dressCode: {
+    es: 'Formal. Se agradece evitar el rosado y el blanco, reservados para la quinceañera.',
+    en: 'Formal. Please avoid pink and white, reserved for the quinceañera.',
+  },
+  whatsappNumber: '51999999999',
+  whatsappMessage: {
+    es: 'Hola, confirmo mi asistencia a los XV años de Ariana ✨',
+    en: 'Hello, I confirm my attendance to Ariana’s Quinceañera ✨',
+  },
+  confirmBefore: { es: '12 de diciembre de 2026', en: 'December 12th, 2026' },
+  heroImage: '/ariana/princesa.jpg',
+  frameImage: '/ariana/xv-1.jpg',
+  music: '/ariana/musica.mp3',
+  photos: [
+    ph('/ariana/nina-1.jpg', 'Ariana de pequeña con gorrito'),
+    ph('/ariana/xv-2.jpg', 'Ariana con su corona'),
+    ph('/ariana/nina-2.jpg', 'Ariana sonriendo'),
+    ph('/ariana/xv-1.jpg', 'Ariana en su vestido rosa'),
+    ph('/ariana/nina-3.jpg', 'Ariana posando'),
+    ph('/ariana/nina-4.jpg', 'Ariana jugando'),
+  ],
+};
+
+const PERFILES: Record<string, InvitationData> = { ariana };
+const slug = typeof location !== 'undefined' ? (location.pathname.split('/').filter(Boolean)[0] ?? '').toLowerCase() : '';
+export const invitationData: InvitationData = PERFILES[slug] ?? camila;
+export const PERFIL_ACTIVO = PERFILES[slug] ? slug : '';
 
 export function whatsappLink(lang: 'es' | 'en'): string {
   const msg = encodeURIComponent(invitationData.whatsappMessage[lang]);

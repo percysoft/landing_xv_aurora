@@ -1,6 +1,6 @@
 export type Lang = 'es' | 'en';
 
-export const translations = {
+const base = {
   es: {
     tapToOpen: 'Toca para abrir',
     opening: 'Abriendo la magia…',
@@ -72,3 +72,23 @@ export const translations = {
     backTop: 'Back to top',
   },
 } as const;
+
+const ARIANA = {
+  es: {
+    heroDate: '26 · 12 · 2026',
+    princessText: 'Entre destellos dorados y pétalos rosados, Ariana florece como en un cuento de hadas.',
+    confirmText: 'Tu compañía hará este día inolvidable. Por favor confirma antes del 12 de diciembre de 2026.',
+    finalName: 'ARIANA',
+  },
+  en: {
+    heroDate: '12 · 26 · 2026',
+    princessText: 'Among golden sparkles and pink petals, Ariana blossoms like in a fairytale.',
+    confirmText: 'Your company will make this day unforgettable. Please confirm before December 12th, 2026.',
+    finalName: 'ARIANA',
+  },
+};
+
+const slugT = typeof location !== 'undefined' ? (location.pathname.split('/').filter(Boolean)[0] ?? '').toLowerCase() : '';
+export const translations = slugT === 'ariana'
+  ? { es: { ...base.es, ...ARIANA.es }, en: { ...base.en, ...ARIANA.en } }
+  : base;

@@ -1,3 +1,4 @@
+import { invitationData } from '../data/invitationData';
 import React, { useMemo } from 'react';
 
 export function GoldenParticles({ count = 18, id = 'g' }: { count?: number; id?: string }) {
@@ -172,7 +173,7 @@ export function WaxSeal() {
     <svg viewBox="0 0 80 80" width="74" height="74" aria-hidden="true">
       <path d="M40 4 C55 4 68 10 70 24 C76 36 72 56 60 64 C52 76 28 76 20 64 C8 56 4 36 10 24 C12 10 25 4 40 4 Z" fill="#a63a52" stroke="#7c2236" strokeWidth="2" />
       <path d="M40 12 C50 12 60 16 61 25 C65 33 62 46 55 51 C50 59 30 59 25 51 C18 46 15 33 19 25 C20 16 30 12 40 12 Z" fill="#c2546e" opacity=".9" />
-      <text x="40" y="48" textAnchor="middle" fontSize="26" fill="#f9e3e3" fontFamily="serif">C</text>
+      <text x="40" y="48" textAnchor="middle" fontSize="26" fill="#f9e3e3" fontFamily="serif">{invitationData.name[0]}</text>
     </svg>
   );
 }

@@ -1,0 +1,1 @@
+{ "rewrites": [ { "source": "/ariana", "destination": "/index.html" }, { "source": "/ariana/", "destination": "/index.html" } ] }

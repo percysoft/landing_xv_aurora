@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { invitationData } from '../data/invitationData';
 import { translations, type Lang } from '../i18n/translations';
 
 /** Music box waltz sintetizado con WebAudio (sin asset externo, respeta autoplay policy). */
@@ -12,12 +13,29 @@ export default function MusicPlayer({ lang }: { lang: Lang }) {
 
   const stop = () => {
     setPlaying(false);
+    audioRef.current?.pause();
     if (timerRef.current) window.clearInterval(timerRef.current);
     ctxRef.current?.close().catch(() => undefined);
     ctxRef.current = null;
   };
 
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
   const play = () => {
+    const src = invitationData.music;
+    if (src) {
+      const a = audioRef.current ?? new Audio(src);
+      audioRef.current = a;
+      a.loop = true;
+      a.volume = 0.7;
+      a.onerror = () => { audioRef.current = null; synth(); };
+      a.play().then(() => setPlaying(true)).catch(() => { audioRef.current = null; synth(); });
+      return;
+    }
+    synth();
+  };
+
+  const synth = () => {
     const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     if (!Ctx) return;
     const ctx = new Ctx();

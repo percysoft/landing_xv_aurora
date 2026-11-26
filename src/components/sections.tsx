@@ -22,10 +22,10 @@ export function HeroSection({ lang }: { lang: Lang }) {
         <ButterflyField />
         <FlowerCorner position="tl" /><FlowerCorner position="tr" />
         <p className="kicker">{t.heroKicker}</p>
-        <h1 className="script" style={{ fontSize: 'clamp(4.5rem,18vw,7.5rem)', margin: '.2em 0 0' }}>Camila</h1>
+        <h1 className="script" style={{ fontSize: 'clamp(4.5rem,18vw,7.5rem)', margin: '.2em 0 0' }}>{invitationData.name}</h1>
         <GoldenOrnament />
         <div className="hero-portrait-wrapper">
-          <img src="/aurora.jpg" alt="" className="hero-portrait" />
+          <img src={invitationData.heroImage ?? '/aurora.jpg'} alt={invitationData.name} className="hero-portrait" />
         </div>
         <p className="serif-title" style={{ letterSpacing: '.3em', fontSize: '.95rem' }}>{t.heroDate}</p>
         <p className="lead">{invitationData.tagline[lang]}</p>
@@ -43,8 +43,8 @@ export function PrincessSection({ lang }: { lang: Lang }) {
       <p className="kicker">{t.princessKicker}</p>
       <h2 className="serif-title" style={{ fontSize: '2rem', margin: '.3em 0' }}>{t.princessTitle}</h2>
       <div style={{ maxWidth: 300, margin: '0 auto' }}>
-        <RoyalFrame label="Princesa Camila en marco ovalado dorado">
-          <PrincessSilhouette />
+        <RoyalFrame label={`Princesa ${invitationData.name} en marco ovalado dorado`}>
+          {invitationData.frameImage ? <img src={invitationData.frameImage} alt={invitationData.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <PrincessSilhouette />}
         </RoyalFrame>
       </div>
       <p className="lead" style={{ marginTop: '1.2rem' }}>{t.princessText}</p>
@@ -96,13 +96,15 @@ export function ParentsGodparents({ lang }: { lang: Lang }) {
     <>
       <Wrap id="padres">
         <p className="kicker">{t.parentsKicker}</p>
-        <h2 className="script" style={{ fontSize: '3rem', margin: '.2em 0' }}>{invitationData.parents[lang].join(' & ')}</h2>
+        <h2 className="script" style={{ fontSize: invitationData.parents[lang].join(' & ').length > 30 ? '2.2rem' : '3rem', margin: '.2em 0' }}>{invitationData.parents[lang].join(' & ')}</h2>
         <GoldenOrnament />
       </Wrap>
-      <Wrap id="padrinos">
-        <p className="kicker">{t.godparentsKicker}</p>
-        <h2 className="script" style={{ fontSize: '2.6rem', margin: '.2em 0' }}>{invitationData.godparents[lang].join(' & ')}</h2>
-      </Wrap>
+      {invitationData.godparents[lang].length > 0 && (
+        <Wrap id="padrinos">
+          <p className="kicker">{t.godparentsKicker}</p>
+          <h2 className="script" style={{ fontSize: '2.6rem', margin: '.2em 0' }}>{invitationData.godparents[lang].join(' & ')}</h2>
+        </Wrap>
+      )}
     </>
   );
 }
