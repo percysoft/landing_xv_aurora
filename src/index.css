@@ -325,3 +325,21 @@ body.elegante .btn-lux:hover, body.elegante .btn-lux:focus-visible { box-shadow:
 .dedication .quote-mark { display: block; font-family: var(--font-serif); font-size: 5rem; line-height: .6; height: 2.2rem; color: #c9a24b; opacity: .85; }
 .dedication p:not(.dedication-sign) { font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; line-height: 1.9; color: #6e4c52; margin: 0 0 1.1rem; }
 .dedication .dedication-sign { font-family: var(--font-display); letter-spacing: .3em; text-transform: uppercase; font-size: .8rem; color: #9b7a35; margin: .9rem 0 0; }
+
+/* ===== Legibilidad: textos más oscuros (perfil elegante) ===== */
+body.elegante { --color-ink: #2b1a1f; --color-ink-soft: #3f2a30; --color-gold-deep: #6b4a0f; }
+body.elegante .lead { color: #3a252b; }
+body.elegante .kicker, body.elegante .event-card h3, body.elegante .dedication .dedication-sign, body.elegante .count-cell span { color: #6b4a0f; }
+body.elegante .dedication p:not(.dedication-sign) { color: #3a252b; }
+body.elegante .parent-name { color: #5a1f3a; }
+body.elegante .event-card p, body.elegante .event-card { color: #2b1a1f; }
+
+/* código de vestimenta con iconos */
+.dress-row { display: flex; justify-content: center; gap: 1.6rem; margin: 1.1rem 0 1.2rem; flex-wrap: wrap; }
+.dress-item { display: grid; justify-items: center; gap: .5rem; max-width: 150px; font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.35; color: #2b1a1f; font-weight: 600; }
+.dress-ico { fill: #f3dcae; stroke: #6b4a0f; stroke-width: 2.2; stroke-linejoin: round; }
+
+/* reseña antes de confirmar */
+.confirm-note { font-family: var(--font-serif); font-size: 1.12rem; line-height: 1.75; color: #2b1a1f; max-width: 34ch; margin: .6rem auto 1rem; font-weight: 500; }
+
+body.elegante #hero p[style*="opacity"], body.elegante section p[style*="opacity"] { opacity: 1 !important; color: #3a252b; }

@@ -6,6 +6,17 @@ import { ButterflyField, Carriage, Castle, FairyCharacter, FlowerCorner, GoldenO
 
 const ico = (e: string) => (invitationData.elegant ? '' : e);
 
+const BowTie = () => (
+  <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" className="dress-ico">
+    <path d="M6 20 L27 32 L6 44 Z" /><path d="M58 20 L37 32 L58 44 Z" /><rect x="26" y="26" width="12" height="12" rx="3" />
+  </svg>
+);
+const DressIco = () => (
+  <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true" className="dress-ico">
+    <path d="M24 6 L29 6 L32 14 L35 6 L40 6 L38 26 L52 58 L12 58 L26 26 Z" />
+  </svg>
+);
+
 function Wrap({ children, id }: { children: React.ReactNode; id: string }) {
   const { ref, visible } = useReveal<HTMLElement>(0.15);
   return (
@@ -217,6 +228,12 @@ export function EventsSection({ lang }: { lang: Lang }) {
       <Wrap id="dresscode">
         <div className="event-card">
           <h3>{ico('👗')} {t.dressTitle}</h3>
+          {invitationData.elegant && t.dressMen && (
+            <div className="dress-row">
+              <div className="dress-item"><BowTie /><span>{t.dressMen}</span></div>
+              <div className="dress-item"><DressIco /><span>{t.dressWomen}</span></div>
+            </div>
+          )}
           <p className="lead">{invitationData.dressCode[lang]}</p>
         </div>
       </Wrap>
@@ -229,6 +246,7 @@ export function EventsSection({ lang }: { lang: Lang }) {
       <Wrap id="confirmar">
         <div className="event-card">
           <h3>{ico('💌')} {t.confirmTitle}</h3>
+          {t.confirmNote && <p className="confirm-note">{t.confirmNote}</p>}
           <p className="lead">{t.confirmText}</p>
           <p style={{ marginTop: '1rem' }}>
             <a className="btn-lux" href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">{invitationData.elegant ? '' : '✆ '}{t.confirmBtn}</a>

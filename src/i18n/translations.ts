@@ -35,6 +35,9 @@ const base = {
     musicPlay: 'Reproducir música', musicPause: 'Pausar música',
     langLabel: 'Idioma',
     backTop: 'Volver arriba',
+    confirmNote: '',
+    dressMen: '',
+    dressWomen: '',
   },
   en: {
     tapToOpen: 'Tap to open',
@@ -70,6 +73,9 @@ const base = {
     musicPlay: 'Play music', musicPause: 'Pause music',
     langLabel: 'Language',
     backTop: 'Back to top',
+    confirmNote: '',
+    dressMen: '',
+    dressWomen: '',
   },
 } as const;
 
@@ -79,12 +85,18 @@ const ARIANA = {
     princessText: 'Entre destellos dorados y pétalos rosados, Ariana florece como en un cuento de hadas.',
     confirmText: 'Tu compañía hará este día inolvidable. Por favor confirma antes del 12 de diciembre de 2026.',
     finalName: 'ARIANA',
+    dressMen: 'Caballeros: traje formal con corbatín',
+    dressWomen: 'Damas: vestido elegante',
+    confirmNote: 'Para mí es muy importante saber si podrás acompañarme. Así preparo todo con cariño para ti. Cuéntame si vas a asistir y con cuántas personas llegarás; solo toma un minuto.',
   },
   en: {
     heroDate: '12 · 26 · 2026',
     princessText: 'Among golden sparkles and pink petals, Ariana blossoms like in a fairytale.',
     confirmText: 'Your company will make this day unforgettable. Please confirm before December 12th, 2026.',
     finalName: 'ARIANA',
+    dressMen: 'Gentlemen: formal suit with a bow tie',
+    dressWomen: 'Ladies: elegant dress',
+    confirmNote: 'It means a lot to me to know if you can join me, so I can prepare everything with love for you. Let me know if you will attend and how many guests will come with you; it only takes a minute.',
   },
 };
 
