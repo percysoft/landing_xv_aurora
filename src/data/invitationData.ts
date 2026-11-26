@@ -9,7 +9,7 @@ export interface InvitationData {
   weekdayES: string;
   weekdayEN: string;
   tagline: { es: string; en: string };
-  ceremony: { time: string; place: string; address: string };
+  ceremony?: { time: string; place: string; address: string };
   reception: { time: string; place: string; address: string };
   venue: string;
   address: string;
@@ -92,10 +92,10 @@ const ariana: InvitationData = {
     es: 'Ariana Abigail Rivera Dávila te invita a celebrar sus XV años, una noche de princesa que quiere compartir contigo.',
     en: 'Ariana Abigail Rivera Dávila invites you to celebrate her quinceañera, a princess night she wishes to share with you.',
   },
-  ceremony: { time: '5:00 PM', place: 'Por confirmar', address: 'Dirección por confirmar' },
-  reception: { time: '7:00 PM', place: 'Por confirmar', address: 'Dirección por confirmar' },
-  venue: 'Por confirmar',
-  address: 'Dirección por confirmar',
+  ceremony: undefined,
+  reception: { time: '', place: 'Calle Mariscal Ureta N° 2800 – Urb. Monterrico', address: 'Ref.: A cuatro cuadras del Kinder Garden' },
+  venue: 'Calle Mariscal Ureta N° 2800 – Urb. Monterrico',
+  address: 'Ref.: A cuatro cuadras del Kinder Garden',
   parents: { es: ['Lita Ivonne Dávila Neyra', 'David Rivera Castillo'], en: ['Lita Ivonne Dávila Neyra', 'David Rivera Castillo'] },
   godparents: { es: [], en: [] },
   dressCode: {
@@ -107,7 +107,7 @@ const ariana: InvitationData = {
     es: 'Hola, confirmo mi asistencia a los XV años de Ariana ✨',
     en: 'Hello, I confirm my attendance to Ariana’s Quinceañera ✨',
   },
-  mapsUrl: '',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Calle+Mariscal+Ureta+2800+Monterrico+Lima+Peru',
   confirmBefore: { es: '12 de diciembre de 2026', en: 'December 12th, 2026' },
   heroImage: '/ariana/princesa.jpg',
   frameImage: '/ariana/xv-1.jpg',

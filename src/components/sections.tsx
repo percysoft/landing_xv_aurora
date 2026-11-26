@@ -165,23 +165,26 @@ export function EventsSection({ lang }: { lang: Lang }) {
   const t = translations[lang];
   return (
     <>
-      <Wrap id="ceremonia">
-        <div className="event-card">
-          <h3>{ico('⛪')} {t.ceremonyTitle}</h3>
-          <p className="serif-title" style={{ fontSize: '1.3rem' }}>{invitationData.ceremony.place}</p>
-          <p>{invitationData.ceremony.time} · {invitationData.ceremony.address}</p>
-        </div>
-      </Wrap>
+      {invitationData.ceremony && (
+        <Wrap id="ceremonia">
+          <div className="event-card">
+            <h3>{ico('⛪')} {t.ceremonyTitle}</h3>
+            <p className="serif-title" style={{ fontSize: '1.3rem' }}>{invitationData.ceremony.place}</p>
+            <p>{invitationData.ceremony.time} · {invitationData.ceremony.address}</p>
+          </div>
+        </Wrap>
+      )}
       <Wrap id="recepcion">
         <div className="event-card">
           <h3>{ico('📍')} {t.locationTitle}</h3>
-          <p>{invitationData.venue} · {invitationData.address}</p>
+          <p className="serif-title" style={{ fontSize: '1.3rem' }}>{invitationData.venue}</p>
+          <p>{invitationData.address}</p>
           {invitationData.mapsUrl && <p><a className="btn-lux" href={invitationData.mapsUrl} target="_blank" rel="noopener noreferrer">{t.locationBtn}</a></p>}
         </div>
         {invitationData.mapsUrl && <div className="map-wrapper" style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-soft)', border: '1px solid rgba(201,162,75,.5)', marginTop: '1rem' }}>
           <iframe
             title={t.locationTitle}
-            src={invitationData.mapsUrl.replace('maps/search', 'maps/embed').replace('maps/place', 'maps/embed')}
+            src={`https://maps.google.com/maps?q=${new URL(invitationData.mapsUrl).searchParams.get('query') ?? ''}&output=embed`}
             style={{ width: '100%', height: '300px', border: 'none', display: 'block' }}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
