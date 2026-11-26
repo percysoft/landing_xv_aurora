@@ -318,3 +318,5 @@ body.elegante h1.name-legible { font-size: clamp(2.6rem, 12.5vw, 4.4rem) !import
 body.elegante .env-letter .name-legible { font-size: 2rem !important; margin: .15em 0 .1em; }
 body.elegante footer .name-legible { font-size: 2.2rem !important; }
 body.elegante .btn-lux { color: #3d1226; font-weight: 700; font-size: .82rem; text-shadow: 0 1px 0 rgba(255,244,214,.55); }
+body.elegante .btn-lux { background: linear-gradient(135deg, #7a2d4d 0%, #5a1f3a 55%, #6d2646 100%); color: #ffffff; border: 1.5px solid #d9b45c; text-shadow: 0 1px 2px rgba(0,0,0,.4); font-weight: 600; box-shadow: 0 10px 26px rgba(90,31,58,.4), inset 0 1px 0 rgba(255,255,255,.25), 0 0 0 3px rgba(217,180,92,.25); }
+body.elegante .btn-lux:hover, body.elegante .btn-lux:focus-visible { box-shadow: 0 14px 34px rgba(90,31,58,.5), 0 0 0 3px rgba(217,180,92,.5); }
