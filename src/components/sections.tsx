@@ -99,7 +99,18 @@ export function ParentsGodparents({ lang }: { lang: Lang }) {
     <>
       <Wrap id="padres">
         <p className="kicker">{t.parentsKicker}</p>
+        {invitationData.elegant ? (
+          <div className="parents-stack">
+            {invitationData.parents[lang].map((n, k) => (
+              <div key={n}>
+                {k > 0 && <div className="amp" aria-hidden="true">&amp;</div>}
+                <p className="parent-name">{n}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
         <h2 className="script" style={{ fontSize: invitationData.parents[lang].join(' & ').length > 30 ? '2.2rem' : '3rem', margin: '.2em 0' }}>{invitationData.parents[lang].join(' & ')}</h2>
+        )}
         <GoldenOrnament />
       </Wrap>
       {invitationData.godparents[lang].length > 0 && (
