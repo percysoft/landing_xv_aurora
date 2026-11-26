@@ -126,7 +126,18 @@ export function ParentsGodparents({ lang }: { lang: Lang }) {
       {invitationData.godparents[lang].length > 0 && (
         <Wrap id="padrinos">
           <p className="kicker">{t.godparentsKicker}</p>
-          <h2 className="script" style={{ fontSize: '2.6rem', margin: '.2em 0' }}>{invitationData.godparents[lang].join(' & ')}</h2>
+          {invitationData.elegant ? (
+            <div className="parents-stack">
+              {invitationData.godparents[lang].map((n, k) => (
+                <div key={n}>
+                  {k > 0 && <div className="amp" aria-hidden="true">&amp;</div>}
+                  <p className="parent-name">{n}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <h2 className="script" style={{ fontSize: '2.6rem', margin: '.2em 0' }}>{invitationData.godparents[lang].join(' & ')}</h2>
+          )}
         </Wrap>
       )}
     </>
@@ -189,6 +200,7 @@ export function EventsSection({ lang }: { lang: Lang }) {
           <h3>{ico('📍')} {t.locationTitle}</h3>
           <p className="serif-title" style={{ fontSize: '1.3rem' }}>{invitationData.venue}</p>
           <p>{invitationData.address}</p>
+          {invitationData.elegant && invitationData.reception.time && <p className="serif-title" style={{ marginTop: '.6rem' }}>A las {invitationData.reception.time}</p>}
           {invitationData.mapsUrl && <p><a className="btn-lux" href={invitationData.mapsUrl} target="_blank" rel="noopener noreferrer">{t.locationBtn}</a></p>}
         </div>
         {invitationData.mapsUrl && <div className="map-wrapper" style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-soft)', border: '1px solid rgba(201,162,75,.5)', marginTop: '1rem' }}>
