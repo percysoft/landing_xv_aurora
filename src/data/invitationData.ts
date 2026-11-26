@@ -112,11 +112,11 @@ const ariana: InvitationData = {
   music: '/ariana/musica.mp3',
   photos: [
     ph('/ariana/nina-1.jpg', 'Ariana de pequeña con gorrito'),
-    ph('/ariana/xv-2.jpg', 'Ariana con su corona'),
     ph('/ariana/nina-2.jpg', 'Ariana sonriendo'),
-    ph('/ariana/xv-1.jpg', 'Ariana en su vestido rosa'),
     ph('/ariana/nina-3.jpg', 'Ariana posando'),
     ph('/ariana/nina-4.jpg', 'Ariana jugando'),
+    ph('/ariana/xv-2.jpg', 'Ariana con su corona'),
+    ph('/ariana/xv-1.jpg', 'Ariana en su vestido rosa'),
   ],
 };
 
