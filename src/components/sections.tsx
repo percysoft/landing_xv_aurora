@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { invitationData, whatsappLink } from '../data/invitationData';
+import { invitationData, whatsappLink, whatsappLinkWith } from '../data/invitationData';
 import { translations, type Lang } from '../i18n/translations';
 import { useCountdown, useParallax, useReveal } from '../hooks/hooks';
 import { ButterflyField, Carriage, Castle, FairyCharacter, FlowerCorner, GoldenOrnament, GoldenParticles, Petals, PrincessSilhouette, RoyalFrame, Sparkles } from './decor';
@@ -16,6 +16,47 @@ const DressIco = () => (
     <path d="M24 6 L29 6 L32 14 L35 6 L40 6 L38 26 L52 58 L12 58 L26 26 Z" />
   </svg>
 );
+
+function RsvpForm({ lang }: { lang: Lang }) {
+  const es = lang === 'es';
+  const [name, setName] = useState('');
+  const [attend, setAttend] = useState<'si' | 'no'>('si');
+  const [num, setNum] = useState(1);
+  const [err, setErr] = useState(false);
+  const L = es
+    ? { name: 'Tu nombre y apellido', ph: 'Ej. María Pérez', att: '¿Podrás asistir?', yes: '¡Sí, ahí estaré!', no: 'No podré asistir', num: '¿Cuántas personas asistirán? (contándote)', send: 'Enviar confirmación por WhatsApp', req: 'Escribe tu nombre para continuar.' }
+    : { name: 'Your full name', ph: 'e.g. Maria Perez', att: 'Will you attend?', yes: 'Yes, I will be there!', no: 'I cannot attend', num: 'How many people will attend? (including you)', send: 'Send confirmation via WhatsApp', req: 'Please enter your name.' };
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim()) { setErr(true); return; }
+    const who = invitationData.name;
+    const msg = attend === 'si'
+      ? (es ? `Hola, soy ${name.trim()}. ¡Confirmo mi asistencia a los XV años de ${who}! Asistiremos ${num} ${num === 1 ? 'persona' : 'personas'}. ✨`
+            : `Hello, I'm ${name.trim()}. I confirm my attendance to ${who}'s Quinceañera! ${num} ${num === 1 ? 'person' : 'people'} will attend. ✨`)
+      : (es ? `Hola, soy ${name.trim()}. Lamentablemente no podré asistir a los XV años de ${who}, ¡les deseo una noche hermosa! 💕`
+            : `Hello, I'm ${name.trim()}. Unfortunately I cannot attend ${who}'s Quinceañera. I wish you a beautiful night! 💕`);
+    window.open(whatsappLinkWith(msg), '_blank', 'noopener,noreferrer');
+  };
+  return (
+    <form className="rsvp-form" onSubmit={submit} noValidate>
+      <label>{L.name}
+        <input value={name} onChange={(e) => { setName(e.target.value); setErr(false); }} placeholder={L.ph} autoComplete="name" aria-invalid={err} />
+      </label>
+      {err && <p className="rsvp-err" role="alert">{L.req}</p>}
+      <label>{L.att}
+        <select value={attend} onChange={(e) => setAttend(e.target.value as 'si' | 'no')}>
+          <option value="si">{L.yes}</option><option value="no">{L.no}</option>
+        </select>
+      </label>
+      {attend === 'si' && (
+        <label>{L.num}
+          <input type="number" min={1} max={10} inputMode="numeric" value={num} onChange={(e) => setNum(Math.min(10, Math.max(1, Number(e.target.value) || 1)))} />
+        </label>
+      )}
+      <button type="submit" className="btn-lux">{L.send}</button>
+    </form>
+  );
+}
 
 function Wrap({ children, id }: { children: React.ReactNode; id: string }) {
   const { ref, visible } = useReveal<HTMLElement>(0.15);
@@ -248,9 +289,11 @@ export function EventsSection({ lang }: { lang: Lang }) {
           <h3>{ico('💌')} {t.confirmTitle}</h3>
           {t.confirmNote && <p className="confirm-note">{t.confirmNote}</p>}
           <p className="lead">{t.confirmText}</p>
-          <p style={{ marginTop: '1rem' }}>
-            <a className="btn-lux" href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">{invitationData.elegant ? '' : '✆ '}{t.confirmBtn}</a>
-          </p>
+          {invitationData.elegant ? <RsvpForm lang={lang} /> : (
+            <p style={{ marginTop: '1rem' }}>
+              <a className="btn-lux" href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">{'✆ '}{t.confirmBtn}</a>
+            </p>
+          )}
         </div>
       </Wrap>
     </>

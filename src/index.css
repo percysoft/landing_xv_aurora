@@ -343,3 +343,11 @@ body.elegante .event-card p, body.elegante .event-card { color: #2b1a1f; }
 .confirm-note { font-family: var(--font-serif); font-size: 1.12rem; line-height: 1.75; color: #2b1a1f; max-width: 34ch; margin: .6rem auto 1rem; font-weight: 500; }
 
 body.elegante #hero p[style*="opacity"], body.elegante section p[style*="opacity"] { opacity: 1 !important; color: #3a252b; }
+
+/* formulario de confirmación */
+.rsvp-form { display: grid; gap: 1rem; max-width: 340px; margin: 1.2rem auto 0; text-align: left; }
+.rsvp-form label { display: grid; gap: .4rem; font-family: var(--font-display); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #3a252b; font-weight: 600; }
+.rsvp-form input, .rsvp-form select { font-family: var(--font-serif); font-size: 1.1rem; letter-spacing: 0; text-transform: none; color: #2b1a1f; background: #fffdf8; border: 1.5px solid #b58a35; border-radius: 4px; padding: .75rem .8rem; width: 100%; }
+.rsvp-form input:focus, .rsvp-form select:focus { outline: 2px solid #5a1f3a; outline-offset: 2px; }
+.rsvp-form .btn-lux { justify-self: center; margin-top: .4rem; letter-spacing: .12em; font-size: .75rem; padding: 1rem 1.2rem; }
+.rsvp-err { color: #9b1c1c; font-size: .95rem; margin: -.4rem 0 0; font-family: var(--font-serif); }

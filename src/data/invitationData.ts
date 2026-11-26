@@ -137,3 +137,7 @@ export function whatsappLink(lang: 'es' | 'en'): string {
   const msg = encodeURIComponent(invitationData.whatsappMessage[lang]);
   return `https://wa.me/${invitationData.whatsappNumber}?text=${msg}`;
 }
+
+export function whatsappLinkWith(message: string): string {
+  return `https://wa.me/${invitationData.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
