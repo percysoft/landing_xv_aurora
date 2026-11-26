@@ -351,3 +351,25 @@ body.elegante #hero p[style*="opacity"], body.elegante section p[style*="opacity
 .rsvp-form input:focus, .rsvp-form select:focus { outline: 2px solid #5a1f3a; outline-offset: 2px; }
 .rsvp-form .btn-lux { justify-self: center; margin-top: .4rem; letter-spacing: .12em; font-size: .75rem; padding: 1rem 1.2rem; }
 .rsvp-err { color: #9b1c1c; font-size: .95rem; margin: -.4rem 0 0; font-family: var(--font-serif); }
+
+/* ===== Más contraste: oscuro, grande y grueso (perfil elegante) ===== */
+body.elegante { --color-ink: #1f1216; --color-ink-soft: #2a1a1f; --color-gold-deep: #4d3408; }
+body.elegante .kicker { font-size: .82rem; font-weight: 600; letter-spacing: .3em; color: #4d3408; }
+body.elegante .lead { font-size: 1.32rem; font-weight: 600; line-height: 1.7; color: #1f1216; max-width: 30ch; }
+body.elegante p, body.elegante .serif-title { color: #1f1216; }
+body.elegante section p, body.elegante footer p { font-size: 1.2rem; font-weight: 600; }
+body.elegante .serif-title { font-weight: 600; }
+body.elegante .event-card h3 { font-size: .95rem; font-weight: 700; color: #4d3408; }
+body.elegante .event-card p { font-size: 1.22rem; font-weight: 600; color: #1f1216; }
+body.elegante .count-cell b { font-size: 1.9rem; font-weight: 700; background: none; -webkit-text-fill-color: #4d3408; color: #4d3408; }
+body.elegante .count-cell span { font-size: .8rem; font-weight: 700; color: #4d3408; }
+body.elegante .dedication p:not(.dedication-sign) { font-size: 1.4rem; font-weight: 600; color: #1f1216; }
+body.elegante .dedication .dedication-sign { font-size: .95rem; font-weight: 700; color: #4d3408; }
+body.elegante .parent-name { font-size: clamp(1.6rem, 7vw, 2.1rem); font-weight: 700; color: #4a1230; }
+body.elegante .photo-card figcaption { font-weight: 600; color: #6b1f45; }
+body.elegante .rsvp-form label { font-size: .85rem; font-weight: 700; color: #1f1216; }
+body.elegante .rsvp-form input, body.elegante .rsvp-form select { font-size: 1.2rem; font-weight: 600; }
+body.elegante .confirm-note, body.elegante .dress-item { font-size: 1.22rem; font-weight: 700; color: #1f1216; }
+body.elegante .btn-lux { font-size: .88rem; font-weight: 700; }
+body.elegante .chip button { color: #1f1216; font-weight: 700; }
+body.elegante .env-letter, body.elegante .env-letter div { color: #1f1216; }
