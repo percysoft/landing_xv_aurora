@@ -23,6 +23,7 @@ export interface InvitationData {
   heroImage?: string;
   frameImage?: string;
   music?: string;
+  elegant?: boolean;
   confirmBefore?: { es: string; en: string };
 }
 
@@ -106,10 +107,12 @@ const ariana: InvitationData = {
     es: 'Hola, confirmo mi asistencia a los XV años de Ariana ✨',
     en: 'Hello, I confirm my attendance to Ariana’s Quinceañera ✨',
   },
+  mapsUrl: '',
   confirmBefore: { es: '12 de diciembre de 2026', en: 'December 12th, 2026' },
   heroImage: '/ariana/princesa.jpg',
   frameImage: '/ariana/xv-1.jpg',
   music: '/ariana/musica.mp3',
+  elegant: true,
   photos: [
     ph('/ariana/nina-1.jpg', 'Ariana de pequeña con gorrito'),
     ph('/ariana/nina-2.jpg', 'Ariana sonriendo'),

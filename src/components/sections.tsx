@@ -4,6 +4,8 @@ import { translations, type Lang } from '../i18n/translations';
 import { useCountdown, useParallax, useReveal } from '../hooks/hooks';
 import { ButterflyField, Carriage, Castle, FairyCharacter, FlowerCorner, GoldenOrnament, GoldenParticles, Petals, PrincessSilhouette, RoyalFrame, Sparkles } from './decor';
 
+const ico = (e: string) => (invitationData.elegant ? '' : e);
+
 function Wrap({ children, id }: { children: React.ReactNode; id: string }) {
   const { ref, visible } = useReveal<HTMLElement>(0.15);
   return (
@@ -154,18 +156,18 @@ export function EventsSection({ lang }: { lang: Lang }) {
     <>
       <Wrap id="ceremonia">
         <div className="event-card">
-          <h3>⛪ {t.ceremonyTitle}</h3>
+          <h3>{ico('⛪')} {t.ceremonyTitle}</h3>
           <p className="serif-title" style={{ fontSize: '1.3rem' }}>{invitationData.ceremony.place}</p>
           <p>{invitationData.ceremony.time} · {invitationData.ceremony.address}</p>
         </div>
       </Wrap>
       <Wrap id="recepcion">
         <div className="event-card">
-          <h3>📍 {t.locationTitle}</h3>
+          <h3>{ico('📍')} {t.locationTitle}</h3>
           <p>{invitationData.venue} · {invitationData.address}</p>
-          <p><a className="btn-lux" href={invitationData.mapsUrl} target="_blank" rel="noopener noreferrer">{t.locationBtn}</a></p>
+          {invitationData.mapsUrl && <p><a className="btn-lux" href={invitationData.mapsUrl} target="_blank" rel="noopener noreferrer">{t.locationBtn}</a></p>}
         </div>
-        <div className="map-wrapper" style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-soft)', border: '1px solid rgba(201,162,75,.5)', marginTop: '1rem' }}>
+        {invitationData.mapsUrl && <div className="map-wrapper" style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-soft)', border: '1px solid rgba(201,162,75,.5)', marginTop: '1rem' }}>
           <iframe
             title={t.locationTitle}
             src={invitationData.mapsUrl.replace('maps/search', 'maps/embed').replace('maps/place', 'maps/embed')}
@@ -174,26 +176,26 @@ export function EventsSection({ lang }: { lang: Lang }) {
             referrerPolicy="no-referrer-when-downgrade"
             allowFullScreen
           />
-        </div>
+        </div>}
       </Wrap>
       <Wrap id="dresscode">
         <div className="event-card">
-          <h3>👗 {t.dressTitle}</h3>
+          <h3>{ico('👗')} {t.dressTitle}</h3>
           <p className="lead">{invitationData.dressCode[lang]}</p>
         </div>
       </Wrap>
       <Wrap id="regalos">
         <div className="event-card">
-          <h3>🎁 {t.giftTitle}</h3>
+          <h3>{ico('🎁')} {t.giftTitle}</h3>
           <p className="lead">{t.giftText}</p>
         </div>
       </Wrap>
       <Wrap id="confirmar">
         <div className="event-card">
-          <h3>💌 {t.confirmTitle}</h3>
+          <h3>{ico('💌')} {t.confirmTitle}</h3>
           <p className="lead">{t.confirmText}</p>
           <p style={{ marginTop: '1rem' }}>
-            <a className="btn-lux" href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">✆ {t.confirmBtn}</a>
+            <a className="btn-lux" href={whatsappLink(lang)} target="_blank" rel="noopener noreferrer">{invitationData.elegant ? '' : '✆ '}{t.confirmBtn}</a>
           </p>
         </div>
       </Wrap>
