@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Castle, GoldenParticles, Sparkles, WaxSeal } from './decor';
 import { invitationData } from '../data/invitationData';
+import { startMusic } from '../music';
 import { translations, type Lang } from '../i18n/translations';
 
 type Stage = 'closed' | 'tap' | 'seal-glow' | 'seal-off' | 'flap' | 'letter' | 'zoom';
@@ -43,8 +44,8 @@ export default function OpeningEnvelope({ lang, onOpened }: { lang: Lang; onOpen
           role="button"
           tabIndex={0}
           aria-label={opening ? t.opening : t.tapToOpen}
-          onClick={() => stage === 'closed' && setStage('tap')}
-          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && stage === 'closed' && setStage('tap')}
+          onClick={() => { if (stage === 'closed') { startMusic(); setStage('tap'); } }}
+          onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && stage === 'closed') { startMusic(); setStage('tap'); } }}
         >
           <div className="env-back" />
           <div className="env-body" />
