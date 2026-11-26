@@ -52,7 +52,7 @@ export default function OpeningEnvelope({ lang, onOpened }: { lang: Lang; onOpen
             <div>
               <div style={{ fontFamily: 'var(--font-display)', fontSize: '.65rem', letterSpacing: '.3em', color: 'var(--color-gold-deep)' }}>MIS XV AÑOS</div>
               <div style={{ fontFamily: 'var(--font-script)', fontSize: '3rem', color: '#a44e6b', lineHeight: 1 }}>{invitationData.name}</div>
-              <div style={{ fontFamily: 'var(--font-serif)', letterSpacing: '.2em' }}>01 · 08 · 2026</div>
+              <div style={{ fontFamily: 'var(--font-serif)', letterSpacing: '.2em' }}>{t.heroDate}</div>
             </div>
           </div>
           <div className="env-front" />
