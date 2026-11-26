@@ -317,3 +317,4 @@ body.elegante .name-legible { font-family: var(--font-display) !important; font-
 body.elegante h1.name-legible { font-size: clamp(2.6rem, 12.5vw, 4.4rem) !important; margin: .35em 0 0 !important; }
 body.elegante .env-letter .name-legible { font-size: 2rem !important; margin: .15em 0 .1em; }
 body.elegante footer .name-legible { font-size: 2.2rem !important; }
+body.elegante .btn-lux { color: #3d1226; font-weight: 700; font-size: .82rem; text-shadow: 0 1px 0 rgba(255,244,214,.55); }
